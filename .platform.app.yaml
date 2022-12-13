@@ -45,7 +45,6 @@ hooks:
     php artisan optimize:clear
 
     php artisan migrate --force
-
     php artisan db:seed
 
 # The relationships of the application with services or other applications.
