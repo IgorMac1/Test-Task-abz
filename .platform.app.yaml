@@ -32,7 +32,7 @@ hooks:
   build: |
     set -e
 
-#     install a specific NodeJS version https://github.com/platformsh/snippets/
+    # install a specific NodeJS version https://github.com/platformsh/snippets/
     #   -v requested version
     #   -y install Yarn
      curl -fsS https://raw.githubusercontent.com/platformsh/snippets/main/src/install_node.sh | { bash /dev/fd/3 -v 17.5; } 3<&0
@@ -45,6 +45,7 @@ hooks:
     php artisan optimize:clear
 
     php artisan migrate --force
+
     php artisan db:seed
 
 # The relationships of the application with services or other applications.
@@ -98,15 +99,15 @@ web:
 
 crons:
   # Run Laravel's scheduler every 5 minutes, which is often as crons can run on Professional plans.
-#  scheduler:
-#    spec: '*/5 * * * *'
-#    cmd: 'php artisan schedule:run'
+  scheduler:
+    spec: '*/5 * * * *'
+    cmd: 'php artisan schedule:run'
   # Run Laravel's queue worker task every 9 minutes
   queue:
-    spec: '*/5 * * * *'
-#    # Allow the worker to run for up to 5 minutes. That prevents
-#    # a long-running queue from blocking a deploy for more than 5
-#    # minutes.
+    spec: '*/9 * * * *'
+    # Allow the worker to run for up to 5 minutes. That prevents
+    # a long-running queue from blocking a deploy for more than 5
+    # minutes.
     cmd: 'php artisan queue:work --max-time=300'
 
 # If you have an especially large queue, you may be better off using a worker.
