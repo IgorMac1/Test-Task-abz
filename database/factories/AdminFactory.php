@@ -19,7 +19,7 @@ class AdminFactory extends Factory
     public function definition()
     {
         return [
-            'id' => 1,
+
             'full_name' => 'Ihor Test',
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('test1234'),

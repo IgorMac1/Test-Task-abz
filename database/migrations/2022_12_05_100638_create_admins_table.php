@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('full_name');
             $table->string('email',100)->unique();
             $table->string('password',100);
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('role_id')->default(1)->constrained('roles');
             $table->timestamps();
         });
     }
