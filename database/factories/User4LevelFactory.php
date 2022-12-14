@@ -23,7 +23,7 @@ class User4LevelFactory extends Factory
             'profession_id' => rand(1,6),
             'admin_created_id' => 1,
             'admin_updated_id' => 1,
-            'manager_id' => fake()->numberBetween(12, 120),
+            'manager_id' => fake()->numberBetween(12, 111),
             'full_name' => fake()->name() ,
             'employment_date' => fake()->dateTimeInInterval('-1 week', '+3 days')->format('Y-m-d'),
             'phone' => fake()->unique()->e164PhoneNumber,
