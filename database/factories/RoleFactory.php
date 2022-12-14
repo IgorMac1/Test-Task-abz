@@ -17,6 +17,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
+            'id' => 1,
            'role' => 'admin',
         ];
     }
