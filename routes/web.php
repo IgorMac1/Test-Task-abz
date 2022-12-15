@@ -43,5 +43,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('user.create', [liveSearchController::class, 'index']);
 Route::post('user/create/search', [liveSearchController::class, 'search'])->name('search');
+Route::get('user/search', [liveSearchController::class, 'searchUser'])->name('search.user');

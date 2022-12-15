@@ -12,6 +12,7 @@ $(document).ready(function (){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success:function (data){
+
                     $('#managerList ul li').each(function (index){
                         if ($('#manager_id').val() === 'None'){
                             $('#submit-btn').attr('disabled',false)
@@ -24,7 +25,8 @@ $(document).ready(function (){
                     })
                     $('#managerList' ).fadeIn();
                     $('#managerList').html(data);
-                }
+                },
+
             });
         }
     });

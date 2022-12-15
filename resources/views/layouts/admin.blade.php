@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AdminLTE 3 | Dashboard</title>
-{{--    <script src="{{asset('https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js')}}"></script>--}}
     <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css')}}" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet"
@@ -36,6 +35,9 @@
                 </form>
             </li>
         </ul>
+        <div >
+            <input placeholder="Search" name="searchUser" id="searchUser">
+        </div>
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -81,7 +83,7 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid ">
+            <div class="container-fluid " id="content">
                 @yield('content')
             </div><!--/. container-fluid -->
         </section>
@@ -136,7 +138,8 @@
 <script src="{{asset('js/phone-musk.js')}}"></script>
 <script src="{{asset('js/datatable-config.js')}}"></script>
 <script src="{{asset('js/fullname-validation.js')}}"></script>
-<script src="{{asset('js/liveSearch.js')}}"></script>
+<script src="{{asset('js/liveSearchManager.js')}}"></script>
+<script src="{{asset('js/liveSearchUsers.js')}}"></script>
 
 </body>
 </html>

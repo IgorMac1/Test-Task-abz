@@ -17,11 +17,21 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('profession','adminCreated','adminUpdated','employee')->paginate(50);
+        $view = 'user.index';
+        $users = User::with('profession','adminCreated','adminUpdated','employee');
+        if ($request->ajax()) {
+            $view = 'user.search';
+        }
 
-        return view('user.index', compact('users'));
+        if ($query = $request->get('query')) {
+            $users = $users->where('full_name', 'like', '%' . $query . '%');
+        }
+
+        $users = $users->paginate(50);
+
+        return view($view, compact('users'));
     }
 
     public function create()

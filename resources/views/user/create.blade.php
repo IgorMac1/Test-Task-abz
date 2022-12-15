@@ -55,7 +55,7 @@
                 <label for="manager" class="form-label">Manager</label>
                 <input type="text" class="form-control  @error('manager_id') is-invalid @enderror" id="manager_id"
                        aria-describedby="manager" name="manager_id" value="{{ old('manager_id') }}">
-                <div id="managerList" ></div>
+                <div  ><ul class="dropdown-menu" style="display:block;position:relative;width:100%;" id="managerList" hidden></ul></div>
             </div>
             <div class="mb-3">
                 <label for="employment_date" class="form-label">Employment date</label>

@@ -10,24 +10,18 @@ class LiveSearchController extends Controller
 {
     function search(Request $request)
     {
-
-        if($request->get('query'))
-        {
+        if ($request->get('query')) {
             $query = $request->get('query');
-
-            $data = DB::table('users')
-                ->where('full_name','LIKE',"%{$query}%")
-                ->get();
+            $data = User::where('full_name', 'LIKE', "%{$query}%")->get('full_name');
             $output = '<ul class="dropdown-menu" style="display:block;position:relative;width:100%;">';
             foreach ($data as $row) {
                 $output .= '
-                <li><a class="dropdown-item" href="#">' . $row->full_name.'</a></li>
+                <li><a class="dropdown-item" href="#">' . $row->full_name . '</a></li>
                 ';
             }
             $output .= '</ul>';
             echo $output;
         }
     }
-
 
 }

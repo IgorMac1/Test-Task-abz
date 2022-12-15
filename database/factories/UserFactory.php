@@ -25,7 +25,6 @@ class UserFactory extends Factory
             'profession_id' => rand(1,6),
             'admin_created_id' => 1,
             'admin_updated_id' => 1,
-//            'manager_id' => 1,
             'full_name' => fake()->name() ,
             'employment_date' => fake()->dateTimeInInterval('-1 week', '+3 days')->format('Y-m-d'),
             'phone' => fake()->unique()->e164PhoneNumber,
