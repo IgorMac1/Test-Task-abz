@@ -8,7 +8,7 @@
                                         <h3 class="card-title">All Users</h3>
                                     </div>
                                     <div class="card-body">
-                                        <table id="example2" class="table table-bordered table-striped">
+                                        <table id="example1" class="table table-bordered table-striped">
                                             <thead >
                                             <tr>
                                                 <th>Photo</th>
@@ -69,11 +69,13 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <form action="{{route('user.delete',$user->id)}}" method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit" class="btn btn-primary">Confirm</button>
-                                                                </form>
+{{--                                                                <form action="{{route('user.delete',$user->id)}}" method="post">--}}
+{{--                                                                    @csrf--}}
+{{--                                                                    @method('delete')--}}
+                                                                <a data-route="{{route('user.delete',$user->id)}}" id="btn-delete">
+                                                                    <button type="button" class="btn btn-primary" >Confirm</button>
+                                                                </a>
+{{--                                                                </form>--}}
                                                             </div>
                                                         </div>
                                                     </div>

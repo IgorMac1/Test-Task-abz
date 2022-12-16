@@ -12,6 +12,7 @@ class ProfessionController extends Controller
 {
     public function index()
     {
+
         $professions = Profession::with('adminCreatedProfession','adminUpdatedProfession')->get();
         return view('profession.index',compact('professions'));
     }
@@ -28,6 +29,7 @@ class ProfessionController extends Controller
         ]);
         $data['admin_created_id'] = Auth::user()->id;
         Profession::create($data);
+        notify()->success("Profession was added");
         return redirect()->route('profession.table');
     }
 
@@ -44,12 +46,14 @@ class ProfessionController extends Controller
         $data['admin_updated_id'] = Auth::user()->id;
 
         $profession->update($data);
+        notify()->success("Profession was updated");
         return redirect()->route('profession.table');
     }
 
     public function destroy(Profession $profession)
     {
         $profession->delete();
+        notify()->warning("Profession was deleted");
         return redirect()->route('profession.table');
     }
 }

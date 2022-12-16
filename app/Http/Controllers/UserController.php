@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $view = 'user.index';
-        $users = User::with('profession','adminCreated','adminUpdated','employee');
+        $users = User::with('profession', 'adminCreated', 'adminUpdated', 'employee');
         if ($request->ajax()) {
             $view = 'user.search';
         }
@@ -28,9 +28,7 @@ class UserController extends Controller
         if ($query = $request->get('query')) {
             $users = $users->where('full_name', 'like', '%' . $query . '%');
         }
-
         $users = $users->paginate(50);
-
         return view($view, compact('users'));
     }
 
@@ -42,15 +40,14 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
-
-        $str = Str::of($request->phone)->replaceMatches('/[^+A-Za-z0-9]++/','');
+        $str = Str::of($request->phone)->replaceMatches('/[^+A-Za-z0-9]++/', '');
         $data = $request->validated();
-        $data['phone']= $str->value;
+        $data['phone'] = $str->value;
         $data['admin_created_id'] = Auth::user()->id;
         $data['photo'] = FileStorageService::upload($data['photo']);
-        $data['manager_id']= DB::table('users')->where('full_name',$data['manager_id'])->value('id');
-
+        $data['manager_id'] = DB::table('users')->where('full_name', $data['manager_id'])->value('id');
         User::create($data);
+        notify()->success("User was added ");
         return redirect()->route('user.table');
     }
 
@@ -60,20 +57,21 @@ class UserController extends Controller
         return view('user.edit', compact('user', 'professions'));
     }
 
-    public function update(UpdateUserRequest $request,User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $str = Str::of($request->phone)->replaceMatches('/[^+A-Za-z0-9]++/','');
+        $str = Str::of($request->phone)->replaceMatches('/[^+A-Za-z0-9]++/', '');
         $data = $request->validated();
         $data['admin_updated_id'] = Auth::user()->id;
-        $data['phone']= $str->value;
-        if (!isset($data['photo'])){
+        $data['phone'] = $str->value;
+        if (!isset($data['photo'])) {
             $data['photo'] = $user->photo;
-        }else{
+        } else {
             $data['photo'] = FileStorageService::upload($data['photo']);
             FileStorageService::remove($user['photo']);
         };
-        $data['manager_id']= DB::table('users')->where('full_name',$data['manager_id'])->value('id');
+        $data['manager_id'] = DB::table('users')->where('full_name', $data['manager_id'])->value('id');
         $user->update($data);
+        notify()->success("User was updated");
         return redirect()->route('user.table');
     }
 
@@ -81,6 +79,7 @@ class UserController extends Controller
     {
         FileStorageService::remove($user['photo']);
         $user->delete();
-        return redirect()->route('user.table');
+        notify()->warning("User was deleted");
+        return response()->json(['message' => 'user was delete successfully']);
     }
 }

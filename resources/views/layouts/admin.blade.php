@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -140,6 +141,9 @@
 <script src="{{asset('js/fullname-validation.js')}}"></script>
 <script src="{{asset('js/liveSearchManager.js')}}"></script>
 <script src="{{asset('js/liveSearchUsers.js')}}"></script>
+<script src="{{ asset('js/iziToast.js') }}"></script>
+<script src="{{ asset('js/delete-user.js') }}"></script>
 
+@include('vendor.lara-izitoast.toast')
 </body>
 </html>

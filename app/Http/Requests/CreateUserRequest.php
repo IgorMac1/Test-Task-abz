@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Manager;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserRequest extends FormRequest
@@ -20,10 +21,8 @@ class CreateUserRequest extends FormRequest
     public function message()
     {
         return array_merge(parent::messages(), [
-            'full_name:min' => 'User name should be more than 2 symbols',
-            'full_name:max' => 'User name should be ess than 256 symbols',
-            'surname:min' => 'User surname should be more than 2 symbols',
             'phone' => 'Incorrect phone format (e.g. +38(000)00xx000)',
+
         ]);
     }
 
@@ -41,7 +40,7 @@ class CreateUserRequest extends FormRequest
             'phone' => ['required', 'string', 'max:17', 'unique:users'],
             'email' => ['required', 'string', 'email','max:255', 'unique:users'],
             'salary' => ['required','numeric','between:0.00,500000.00'],
-            'manager_id' => ['required', 'string'],
+            'manager_id' => ['required', 'string',new Manager()],
             'photo'=>['required','mimes:jpeg,png,jpg','max:5000','dimensions:min_width=300,min_height=300'],
         ];
     }
