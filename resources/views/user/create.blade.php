@@ -36,7 +36,6 @@
                 @enderror
                 <input type="tel" class="form-control art-stranger @error('phone') is-invalid @enderror" id="phone"
                        aria-describedby="phone" name="phone" value="{{ old('phone') }}">
-                <div id="phoneHelp" class="form-text">Required format +38(xxx)XXX XX XX</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -68,6 +67,7 @@
                 <div class="error" style="color: red">{{ $message }}</div>
                 @enderror
                 <input type="number" class="form-control @error('salary') is-invalid @enderror" id="salary"
+                       min="1"
                        aria-describedby="salary" name="salary" value="{{ old('salary') }}">
                 <div id="salaryHelp" class="form-text">Max 500,000.00</div>
             </div>
@@ -77,6 +77,7 @@
                 <div class="error" style="color: red">{{ $message }}</div>
                 @enderror
                 <input type="text" class="form-control  @error('manager_id') is-invalid @enderror" id="manager_id"
+                       placeholder="Please type manager name, min. 3 char."
                        aria-describedby="manager" name="manager_id" >
                 <div><ul class="dropdown-menu" style="display:block;position:relative;width:100%;" id="managerList" ></ul></div>
             </div>
