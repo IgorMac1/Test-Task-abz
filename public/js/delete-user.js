@@ -1,8 +1,6 @@
 $(document).on('click','#btn-delete',function (e){
     e.preventDefault();
     let $btn = $(this);
-    console.log($btn.data('route'))
-    console.log($(this).id)
     $.ajax({
         url: $btn.data('route'),
         type: 'DELETE',

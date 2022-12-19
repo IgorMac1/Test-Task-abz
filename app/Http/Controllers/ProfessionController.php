@@ -12,7 +12,6 @@ class ProfessionController extends Controller
 {
     public function index()
     {
-
         $professions = Profession::with('adminCreatedProfession','adminUpdatedProfession')->get();
         return view('profession.index',compact('professions'));
     }

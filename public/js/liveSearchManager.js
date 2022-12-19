@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#manager_id').keyup(function () {
         let query = $(this).val();
-        if (query != '') {
+        if (query !== '') {
             let _token = $('input[name="_token"]').val();
             $.ajax({
                 url: "/user/create/search",
@@ -26,7 +26,6 @@ $(document).ready(function () {
     $(document).on('click', 'li', function () {
         $('#manager_id').val($(this).text());
         $('#managerList').fadeOut();
-        // $('#submit-btn').attr('disabled', false)
     });
 
 

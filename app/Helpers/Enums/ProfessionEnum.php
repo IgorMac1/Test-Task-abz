@@ -10,7 +10,8 @@ enum ProfessionEnum: string
     case Pm = "Pm";
     case Designer = "Designer";
 
-    public static function findByKey(string $key) {
+    public static function findByKey(string $key)
+    {
         return constant("self::$key");
     }
 }

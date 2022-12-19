@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(ProfessionSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(User2LevelSeeder::class);
-        $this->call(User3LevelSeeder::class);
-        $this->call(User4LevelSeeder::class);
-        $this->call(User5LevelSeeder::class);
+
+//        $this->call(User2LevelSeeder::class);
+//        $this->call(User3LevelSeeder::class);
+//        $this->call(User4LevelSeeder::class);
+//        $this->call(User5LevelSeeder::class);
 
     }
 }
